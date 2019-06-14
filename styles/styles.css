@@ -1,0 +1,99 @@
+body {
+	box-sizing: border-box;
+	background-color: darkviolet;
+	color: white;
+	font-size: 2em;
+	line-height: 3;
+	font-family: Arial, sans-serif;
+}
+.list {
+	display: flex;
+	flex-flow: row wrap;	
+	justify-content: center;
+	width: 1600px;
+	margin: .5em;
+	list-style-type: none;
+}
+.item {
+	width: 600px;
+	margin: 0px;
+	list-style-position: outside;
+	padding-left: .5em;
+	position: relative;
+}
+.item_done_line, .item_task_line {
+	display: inline-block;
+	content: '';
+	opacity: .7;
+	height: 2em;
+	position: absolute;
+	right: 23%;
+	top: 67%;
+}
+.item_done_line {
+	border-right: 2px solid white;
+}
+.item_task_line {
+	border-right: 2px dashed white;	
+}
+
+li:nth-child(odd).list__item::after {
+	opacity: .7;
+	display: inline-block;
+	content: '';
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	right: 20%;
+	top: 32%;
+}
+.item_done::after {
+	border: 2px solid white;
+	border-radius: 50%;
+}
+.item_task::after {
+	border-radius: 50%;
+	border: 2px dashed white;
+}
+.item_in_process_fullscreen::after {
+	box-shadow: 0 0 0 .2em darkviolet inset;
+	background-color: yellow;
+}
+.item_in_process::after {
+	border-radius: 50%;
+	border: 2px solid white;
+	box-shadow: 0 0 0 .2em darkviolet inset;
+	background-color: yellow;
+}
+.item_done {
+	list-style-image: url(icons/baseline_done_white_18dp.png);
+}
+.item_task {
+	list-style-image: url(icons/baseline_schedule_white_18dp.png);
+	opacity: .7;
+}
+.item_in_process {
+	color: yellow;
+}
+.item_in_process::before {
+	display: block;
+	width: auto;
+	height: 2.6em;
+	content: url(icons/baseline_loop_white_18dp.png);
+	position: absolute;
+	left: -1.4em;
+	top: .2em;
+	animation: spin 2s linear 0s infinite;
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(-360deg);}
+}
+
+li:nth-child(2n) span  {
+	visibility: hidden;
+}
+li:nth-child(9) span {
+	visibility: hidden;
+}
+
